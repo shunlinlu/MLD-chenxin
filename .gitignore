@@ -1,0 +1,7 @@
+/checkpoints/
+/deps/
+*.pyc
+# ignore all pycache
+__pycache__/
+results/
+datasets
