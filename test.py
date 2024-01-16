@@ -60,6 +60,7 @@ def main():
 
     # create dataset
     datasets = get_datasets(cfg, logger=logger, phase="test")[0]
+    # import pdb; pdb.set_trace()
     logger.info("datasets module {} initialized".format("".join(
         cfg.TRAIN.DATASETS)))
 

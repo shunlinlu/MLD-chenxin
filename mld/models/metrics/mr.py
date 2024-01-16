@@ -76,6 +76,10 @@ class MRMetrics(Metric):
         assert joints_rst.dim() == 4
         # (bs, seq, njoint=22, 3)
 
+        '''
+        这里是bs为1，joints_rst, joints_ref的shape为(1, 36, 22, 3)
+        '''
+
         self.count += sum(lengths)
         self.count_seq += len(lengths)
 
@@ -88,7 +92,7 @@ class MRMetrics(Metric):
             align_inds = [0]
         else:
             align_inds = None
-
+        import pdb; pdb.set_trace()
         for i in range(len(lengths)):
             self.MPJPE += torch.sum(
                 calc_mpjpe(rst[i], ref[i], align_inds=align_inds))

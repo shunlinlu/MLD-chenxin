@@ -352,8 +352,13 @@ def align_by_parts(joints, align_inds=None):
 
 
 def calc_mpjpe(preds, target, align_inds=[0], sample_wise=True, trans=None):
+    # import pdb; pdb.set_trace()
+    print(target.shape)
     # Expects BxJx3
     valid_mask = target[:, :, 0] != -2.0
+    # 判断valid mask是否有false
+
+    import pdb; pdb.set_trace()
     # valid_mask = torch.BoolTensor(target[:, :, 0].shape)
     if align_inds is not None:
         preds_aligned = align_by_parts(preds, align_inds=align_inds)

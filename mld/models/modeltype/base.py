@@ -32,6 +32,7 @@ class BaseModel(LightningModule):
         return self.allsplit_step("val", batch, batch_idx)
 
     def test_step(self, batch, batch_idx):
+        # import pdb; pdb.set_trace()
         if len(self.times) *self.cfg.TEST.BATCH_SIZE % (100) > 0 and len(self.times) > 0:
             print(f"Average time per sample ({self.cfg.TEST.BATCH_SIZE*len(self.times)}): ", np.mean(self.times)/self.cfg.TEST.BATCH_SIZE)
         return self.allsplit_step("test", batch, batch_idx)

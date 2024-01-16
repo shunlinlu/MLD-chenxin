@@ -38,12 +38,13 @@ TEST:
   MEAN: False
   NUM_SAMPLES: 1
   FACT: 1
+  REPLICATION_TIMES: 1
 
 # Datasets Configuration
 DATASET:
   JOINT_TYPE: 'humanml3d' # join type
 METRIC:
-  TYPE: ['TemosMetric', 'TM2TMetrics']
+  TYPE: ['TemosMetric', 'TM2TMetrics', 'MRMetrics']
 # Losses Configuration
 LOSS:
   TYPE: mld # Losses type
