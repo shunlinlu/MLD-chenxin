@@ -622,7 +622,7 @@ class MLD(BaseModel):
         word_embs = batch["word_embs"].detach().clone()
         pos_ohot = batch["pos_ohot"].detach().clone()
         text_lengths = batch["text_len"].detach().clone()
-
+        # import pdb; pdb.set_trace()
         # start
         start = time.time()
 
@@ -809,6 +809,7 @@ class MLD(BaseModel):
         return rs_set
 
     def allsplit_step(self, split: str, batch, batch_idx):
+        # import pdb; pdb.set_trace()
         if split in ["train", "val"]:
             if self.stage == "vae":
                 rs_set = self.train_vae_forward(batch)
@@ -841,6 +842,7 @@ class MLD(BaseModel):
             if self.condition in ['text', 'text_uncond']:
                 # use t2m evaluators
                 rs_set = self.t2m_eval(batch)
+                # import pdb; pdb.set_trace()
             elif self.condition == 'action':
                 # use a2m evaluators
                 rs_set = self.a2m_eval(batch)
@@ -883,6 +885,7 @@ class MLD(BaseModel):
                         lengths=batch["length"],
                     )
                 elif metric == "MRMetrics":
+                    import pdb; pdb.set_trace()
                     getattr(self, metric).update(rs_set["joints_rst"],
                                                  rs_set["joints_ref"],
                                                  batch["length"])

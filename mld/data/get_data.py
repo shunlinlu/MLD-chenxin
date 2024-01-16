@@ -23,6 +23,7 @@ def get_mean_std(phase, cfg, dataset_name):
     name = "t2m" if dataset_name == "humanml3d" else dataset_name
     assert name in ["t2m", "kit"]
     # if phase in ["train", "val", "test"]:
+    # import pdb; pdb.set_trace()
     if phase in ["val"]:
         if name == 't2m':
             data_root = pjoin(cfg.model.t2m_path, name, "Comp_v6_KLD01",
@@ -88,6 +89,8 @@ def get_datasets(cfg, logger=None, phase="train"):
             wordVectorizer = get_WordVectorizer(cfg, phase, dataset_name)
             # get collect_fn
             collate_fn = get_collate_fn(dataset_name, phase)
+
+            # import pdb; pdb.set_trace()
             # get dataset module
             dataset = dataset_module_map[dataset_name.lower()](
                 cfg=cfg,

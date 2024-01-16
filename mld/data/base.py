@@ -11,6 +11,7 @@ class BASEDataModule(pl.LightningDataModule):
 
         # self.dataloader_options = {
         #     "batch_size": batch_size, "num_workers": num_workers,"collate_fn": collate_datastruct_and_text}
+        # import pdb; pdb.set_trace()
         self.dataloader_options = {
             "batch_size": batch_size,
             "num_workers": num_workers,
@@ -99,9 +100,9 @@ class BASEDataModule(pl.LightningDataModule):
 
     def test_dataloader(self):
         # overrides batch_size and num_workers
+        import pdb; pdb.set_trace()
         dataloader_options = self.dataloader_options.copy()
-        dataloader_options[
-            "batch_size"] = 1 if self.is_mm else self.cfg.TEST.BATCH_SIZE
+        dataloader_options["batch_size"] = 1 if self.is_mm else self.cfg.TEST.BATCH_SIZE
         dataloader_options["num_workers"] = self.cfg.TEST.NUM_WORKERS
         # dataloader_options["drop_last"] = True
         dataloader_options["shuffle"] = False

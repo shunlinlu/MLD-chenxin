@@ -23,6 +23,7 @@ class HumanML3DDataModule(BASEDataModule):
         self.save_hyperparameters(logger=False)
         self.name = "humanml3d"
         self.njoints = 22
+        # import pdb; pdb.set_trace()
         if phase == "text_only":
             self.Dataset = TextOnlyDataset
         else:
